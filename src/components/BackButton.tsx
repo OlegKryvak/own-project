@@ -20,7 +20,7 @@ const BackButton: FC<Props> = ({ goBack }) => {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: 10 + getStatusBarHeight(),
+    top: 20 + getStatusBarHeight(),
     left: 4
   },
   image: {

@@ -29,7 +29,7 @@ export const AppStackRoutes = () => {
           name="RegisterScreen"
           component={RegisterScreen}
         />
-        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen
           name="ResetPasswordScreen"
           component={ResetPasswordScreen}

@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { emailValidator } from '../../utils';
+import { IEmail } from '../../types/components';
 import {
   BackButton,
   Background,
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const ResetPasswordScreen: FC<Props> = ({ navigation }) => {
-  const [email, setEmail] = useState({ value: '', error: '' });
+  const [email, setEmail] = useState<IEmail>({ value: '', error: '' });
 
   const sendResetPasswordEmail = () => {
     const emailError = emailValidator(email.value);
@@ -27,7 +28,7 @@ const ResetPasswordScreen: FC<Props> = ({ navigation }) => {
 
   return (
     <Background>
-      <BackButton goBack={navigation.goBack} />
+      <BackButton goBack={()=> navigation.goBack()} />
       <Header>Restore Password</Header>
       <TextInput
         label="E-mail address"

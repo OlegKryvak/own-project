@@ -1,16 +1,19 @@
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import React, { FC, useState } from 'react';
 import { Text } from 'react-native-paper';
-import { emailValidator, passwordValidator } from '../../utils';
 import { IEmail, IPassword } from '../../types/components';
 import { theme } from '../../styles';
 import {
-  BackButton,
   Background,
   Button,
   Header,
   TextInput
 } from '../../components';
+import {
+  emailValidator,
+  passwordValidator,
+  signIn
+} from '../../utils';
 
 interface Props {
   navigation: any;
@@ -34,15 +37,16 @@ const LoginScreen: FC<Props> = ({ navigation }) => {
       setPassword({ ...password, error: passwordError });
       return;
     }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Dashboard' }]
+    signIn(email.value, () => {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'DashboardScreen' }]
+      });
     });
   };
 
   return (
     <Background>
-      <BackButton goBack={navigation.goBack} />
       <Header>Welcome back.</Header>
       <TextInput
         label="Email"
