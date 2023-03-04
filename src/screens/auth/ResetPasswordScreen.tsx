@@ -1,10 +1,13 @@
 import React, { FC, useState } from 'react';
-import Background from '../../components/Background';
-import BackButton from '../../components/BackButton';
-import Header from '../../components/Header';
-import TextInput from '../../components/TextInput';
-import Button from '../../components/Button';
-import { emailValidator } from '../../utils/functions/emailValidator';
+import { emailValidator } from '../../utils';
+import {
+  BackButton,
+  Background,
+  Button,
+  Header,
+  TextInput
+} from '../../components';
+
 
 interface Props {
   navigation: any;

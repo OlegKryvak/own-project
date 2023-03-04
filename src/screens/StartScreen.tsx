@@ -1,8 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import Background from '../components/Background';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import Paragraph from '../components/Paragraph';
+import { Background, Header } from '../components';
 
 interface Props {
   navigation: any;
@@ -11,13 +8,12 @@ interface Props {
 const StartScreen: FC<Props> = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
-      
       navigation.navigate('LoginScreen');
     }, 2000);
   }, []);
   return (
     <Background>
-      <Header>Hello</Header>
+      <Header>Nice to meet you!</Header>
     </Background>
   );
 };

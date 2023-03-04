@@ -1,30 +1,37 @@
-import React, { FC, ReactNode } from 'react'
-import { ImageBackground, StyleSheet, KeyboardAvoidingView } from 'react-native'
-import { theme } from '../core/theme'
+import React, { FC, ReactNode } from 'react';
+import { theme } from '../styles';
+import {
+  ImageBackground,
+  StyleSheet,
+  KeyboardAvoidingView
+} from 'react-native';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
-const Background: FC<Props> = ({ children }) =>{
+const Background: FC<Props> = ({ children }) => {
   return (
     <ImageBackground
       source={require('../assets/images/background_dot.png')}
       resizeMode="repeat"
       style={styles.background}
     >
-      <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior="padding"
+      >
         {children}
       </KeyboardAvoidingView>
     </ImageBackground>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: '100%',
-    backgroundColor: theme.colors.surface,
+    backgroundColor: theme.colors.surface
   },
   container: {
     flex: 1,
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
     maxWidth: 340,
     alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+    justifyContent: 'center'
+  }
+});
 export default Background;

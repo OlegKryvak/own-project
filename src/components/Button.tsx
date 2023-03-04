@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
-import { StyleSheet } from 'react-native';
 import { Button as PaperButton } from 'react-native-paper';
-import { theme } from '../core/theme';
+import { StyleSheet } from 'react-native';
+import React, { FC } from 'react';
 import { IButton } from '../types/components';
+import { theme } from '../styles';
 
-interface Props extends IButton{}
+interface Props extends IButton {}
 
 const Button: FC<Props> = ({ mode, style, ...props }) => {
   return (

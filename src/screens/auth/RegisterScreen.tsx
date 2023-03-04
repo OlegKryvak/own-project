@@ -1,15 +1,19 @@
-import React, { FC, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { FC, useState } from 'react';
 import { Text } from 'react-native-paper';
-import Background from '../../components/Background';
-import Header from '../../components/Header';
-import Button from '../../components/Button';
-import TextInput from '../../components/TextInput';
-import BackButton from '../../components/BackButton';
-import { theme } from '../../core/theme';
-import { emailValidator } from '../../utils/functions/emailValidator';
-import { passwordValidator } from '../../utils/functions/passwordValidator';
-import { nameValidator } from '../../utils/functions/nameValidator';
+import { theme } from '../../styles';
+import {
+  BackButton,
+  Background,
+  Button,
+  Header,
+  TextInput
+} from '../../components';
+import {
+  emailValidator,
+  nameValidator,
+  passwordValidator
+} from '../../utils';
 
 interface Props {
   navigation: any;

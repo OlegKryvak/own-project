@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
-import { theme } from '../core/theme';
+import { FONT_FAMILY } from '../styles/typography';
+import { theme } from '../styles';
 
 interface Props {
   children: ReactNode;
@@ -15,7 +16,8 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 21,
     color: theme.colors.primary,
-    fontWeight: 'bold',
+    fontFamily: FONT_FAMILY,
+    fontWeight: '900',
     paddingVertical: 12
   }
 });

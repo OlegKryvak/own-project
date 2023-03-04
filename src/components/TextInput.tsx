@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
 import { TextInput as Input } from 'react-native-paper';
-import { theme } from '../core/theme';
+import { View, StyleSheet, Text } from 'react-native';
+import React, { FC } from 'react';
 import { ITextInput } from '../types/components';
+import { theme } from '../styles';
 
 interface Props extends ITextInput {}
 

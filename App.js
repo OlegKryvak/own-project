@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { AppStackRoutes } from './src/routes/index';
 
 export default function AppNavigator() {

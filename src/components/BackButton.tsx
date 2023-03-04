@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { TouchableOpacity, Image, StyleSheet } from 'react-native';
+import React, { FC } from 'react';
 
 interface Props {
   goBack: () => void;
