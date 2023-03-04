@@ -40,7 +40,7 @@ const LoginScreen: FC<Props> = ({ navigation }) => {
     signIn(email.value, () => {
       navigation.reset({
         index: 0,
-        routes: [{ name: 'DashboardScreen' }]
+        routes: [{ name: 'HomeScreen' }]
       });
     });
   };

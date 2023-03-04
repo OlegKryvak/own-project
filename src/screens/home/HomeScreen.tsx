@@ -12,7 +12,7 @@ interface Props {
   navigation: any;
 }
 
-const Dashboard: FC<Props> = ({ navigation }) => {
+const HomeScreen: FC<Props> = ({ navigation }) => {
   const [email] = useAsyncStorage('@email');
   const handleLogout = useCallback(() => {
     signOut(() => {
@@ -39,4 +39,4 @@ const Dashboard: FC<Props> = ({ navigation }) => {
   );
 };
 
-export default Dashboard;
+export default HomeScreen;

@@ -15,7 +15,7 @@ const StartScreen: FC<Props> = ({ navigation }) => {
       navigation.reset({
         index: 0,
         routes: email
-          ? [{ name: 'DashboardScreen' }]
+          ? [{ name: 'MainContainer' }]
           : [{ name: 'LoginScreen' }]
       });
     }, 2000);

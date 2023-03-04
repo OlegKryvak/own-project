@@ -5,12 +5,13 @@ import React from 'react';
 //import all screen components
 import { AppStackParamList } from '../types/navigation';
 import {
-  DashboardScreen,
+  HomeScreen,
   LoginScreen,
   RegisterScreen,
   ResetPasswordScreen,
   StartScreen
 } from '../screens';
+import MainContainer from './tabNavigation';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
@@ -29,10 +30,14 @@ export const AppStackRoutes = () => {
           name="RegisterScreen"
           component={RegisterScreen}
         />
-        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen
           name="ResetPasswordScreen"
           component={ResetPasswordScreen}
+        />
+        <Stack.Screen
+          name="MainContainer"
+          component={MainContainer}
         />
       </Stack.Navigator>
     </NavigationContainer>
