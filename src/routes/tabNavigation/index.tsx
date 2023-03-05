@@ -1,22 +1,24 @@
-import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import * as React from 'react';
 import { theme } from '../../styles';
 import {
   HomeScreen,
+  MenuScreen,
   ProfileScreen,
   SettingsScreen
 } from '../../screens';
 import {
-  DETAILS,
   HOME,
+  MENU,
+  PROFILE,
   SETTINGS,
   switchBottomIcon
 } from '../../utils';
 
 const Tab = createBottomTabNavigator();
 
-function MainContainer() {
+const MainContainer = () => {
   return (
     <Tab.Navigator
       initialRouteName={HOME}
@@ -31,17 +33,25 @@ function MainContainer() {
               size={30}
               color={
                 focused
-                  ? theme.colors.primary
-                  : theme.colors.secondary
+                  ? theme.colors.lightGreen
+                  : theme.colors.primaryContainer
               }
             />
           );
         },
         tabBarStyle: {
-          backgroundColor: theme.colors.primaryContainer,
+          backgroundColor: theme.colors.primary,
           borderRadius: 12,
-          paddingTop: 10,
-        }
+          height: 85,
+          paddingTop: 5,
+          alignItems: 'center',
+        },
+        tabBarLabelStyle: {
+          fontWeight: '900',
+          fontSize: 14,
+        },
+        tabBarActiveTintColor: theme.colors.lightGreen,
+        tabBarInactiveTintColor: theme.colors.primaryContainer,
       })}
     >
       <Tab.Screen
@@ -50,13 +60,18 @@ function MainContainer() {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name={DETAILS}
-        component={ProfileScreen}
+        name={MENU}
+        component={MenuScreen}
         options={{ headerShown: false }}
       />
       <Tab.Screen
         name={SETTINGS}
         component={SettingsScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name={PROFILE}
+        component={ProfileScreen}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>

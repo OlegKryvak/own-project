@@ -11,7 +11,6 @@ const StartScreen: FC<Props> = ({ navigation }) => {
   
   useEffect(() => {
     setTimeout(() => {
-      console.log(email);
       navigation.reset({
         index: 0,
         routes: email

@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react';
-import { theme } from '../styles';
 import {
   ImageBackground,
   StyleSheet,
   KeyboardAvoidingView
 } from 'react-native';
+import { theme } from '../styles';
 
 interface Props {
   children: ReactNode;
@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: '100%',
-    backgroundColor: theme.colors.surface
+    justifyContent: 'space-between',
+    backgroundColor: theme.colors.primaryContainer
   },
   container: {
     flex: 1,

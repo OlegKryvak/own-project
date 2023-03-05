@@ -1,5 +1,6 @@
-const HOME = 'Home';
-const DETAILS = 'Details';
+const HOME = 'Map';
+const MENU = 'Menu';
+const PROFILE = 'Profile';
 const SETTINGS = 'Settings';
 
-export {HOME, DETAILS, SETTINGS};
+export {HOME, MENU, SETTINGS, PROFILE};
