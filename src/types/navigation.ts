@@ -1,4 +1,5 @@
-import { ParamListBase } from "@react-navigation/native";
+import { ParamListBase } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export interface AppStackParamList extends ParamListBase {
   StartScreen: undefined;
@@ -7,3 +8,6 @@ export interface AppStackParamList extends ParamListBase {
   Dashboard: undefined;
   ResetPasswordScreen: undefined;
 }
+
+export type NavigationProps =
+  NativeStackNavigationProp<AppStackParamList>;

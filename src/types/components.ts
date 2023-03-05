@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IEmail {
   value: string;
   error: string;
@@ -25,5 +27,17 @@ export interface IButton {
     mode: "text" | "outlined" | "contained" | "elevated" | "contained-tonal" | undefined;
     onPress: () => void;
     style?: any;
-    children: any;
+    children: ReactNode;
+}
+
+export interface IHeader {
+  children: ReactNode;
+  color?: string;
+  fontSize?: number;
+}
+
+export interface INavigationCard {
+  icon: string;
+  text: string;
+  navigateTo: string;
 }

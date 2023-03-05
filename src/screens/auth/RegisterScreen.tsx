@@ -3,7 +3,6 @@ import React, { FC, useState } from 'react';
 import { Text } from 'react-native-paper';
 import { theme } from '../../styles';
 import {
-  BackButton,
   Background,
   Button,
   Header,
@@ -42,7 +41,6 @@ const RegisterScreen: FC<Props> = ({ navigation }) => {
 
   return (
     <Background>
-      <BackButton goBack={navigation.goBack} />
       <Header>Create Account</Header>
       <TextInput
         label="Name"
