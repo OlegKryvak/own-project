@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface IEmail {
   value: string;
@@ -24,16 +24,32 @@ export interface ITextInput {
 }
 
 export interface IButton {
-    mode: "text" | "outlined" | "contained" | "elevated" | "contained-tonal" | undefined;
-    onPress: () => void;
-    style?: any;
-    children: ReactNode;
+  mode:
+    | 'text'
+    | 'outlined'
+    | 'contained'
+    | 'elevated'
+    | 'contained-tonal'
+    | undefined;
+  onPress: () => void;
+  style?: any;
+  children: ReactNode;
 }
 
-export interface IHeader {
+export interface IText {
   children: ReactNode;
   color?: string;
   fontSize?: number;
+  fontWeight?:
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
 }
 
 export interface INavigationCard {

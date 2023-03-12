@@ -1,17 +1,9 @@
 import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import { Background, NavigationCard } from '../../components';
+import { verticalScale, WINDOW_WIDTH } from '../../styles';
 import { INavigationCard } from '../../types/components';
 import { menuNavigation } from '../../utils';
-import {
-  Background,
-  NavigationCard
-} from '../../components';
-import {
-  scaleSize,
-  SCALE_46,
-  SCALE_50,
-  WINDOW_WIDTH
-} from '../../styles';
 
 interface Props {
   navigation: any;
@@ -42,15 +34,15 @@ const MenuScreen: FC<Props> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   teslaImg: {
-    maxHeight: scaleSize(220),
+    maxHeight: '30%',
     aspectRatio: 2.2,
-    marginTop: SCALE_50
+    marginTop: verticalScale(30)
   },
   navigationContainer: {
     flex: 1,
     alignItems: 'center',
     width: WINDOW_WIDTH - 20,
-    marginTop: SCALE_46
+    marginTop: verticalScale(30)
   }
 });
 

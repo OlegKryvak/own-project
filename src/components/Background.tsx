@@ -1,9 +1,5 @@
+import { StyleSheet, View } from 'react-native';
 import React, { FC, ReactNode } from 'react';
-import {
-  ImageBackground,
-  StyleSheet,
-  KeyboardAvoidingView
-} from 'react-native';
 import { theme } from '../styles';
 
 interface Props {
@@ -11,37 +7,17 @@ interface Props {
 }
 
 const Background: FC<Props> = ({ children }) => {
-  return (
-    <ImageBackground
-      source={require('../assets/images/background_dot.png')}
-      resizeMode="repeat"
-      style={styles.background}
-    >
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior="padding"
-      >
-        {children}
-      </KeyboardAvoidingView>
-    </ImageBackground>
-  );
+  return <View style={styles.background}>{children}</View>;
 };
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: '100%',
-    justifyContent: 'space-between',
-    backgroundColor: theme.colors.primaryContainer
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-    width: '100%',
-    maxWidth: 340,
+    backgroundColor: theme.colors.primaryContainer,
+    padding: '5%',
     alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'center'
   }
 });
 export default Background;

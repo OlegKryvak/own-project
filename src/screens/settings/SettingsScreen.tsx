@@ -1,12 +1,5 @@
-import React, { FC, useCallback } from 'react';
-import { useAsyncStorage } from '../../hooks';
-import { signOut } from '../../utils';
-import {
-  Background,
-  Button,
-  Header,
-  Paragraph
-} from '../../components';
+import React, { FC } from 'react';
+import { Background, CustomText } from '../../components';
 
 interface Props {
   navigation: any;
@@ -15,7 +8,7 @@ interface Props {
 const SettingsScreen: FC<Props> = ({ navigation }) => {
   return (
     <Background>
-      <Header>SettingsScreen</Header>
+      <CustomText>SettingsScreen</CustomText>
     </Background>
   );
 };

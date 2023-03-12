@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
+import { Background, CustomText, Paragraph } from '../../components';
 import { useAsyncStorage } from '../../hooks';
-import { Background, Header, Paragraph } from '../../components';
 
 interface Props {
   navigation: any;
@@ -10,7 +10,7 @@ const HomeScreen: FC<Props> = ({ navigation }) => {
   const [email] = useAsyncStorage('@email');
   return (
     <Background>
-      <Header>Let’s start</Header>
+      <CustomText>Let’s start</CustomText>
       <Paragraph>Hi {email}</Paragraph>
       <Paragraph>
         Your amazing app starts here. Open you favorite code editor

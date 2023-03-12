@@ -1,11 +1,10 @@
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { FC, useState } from 'react';
-import { Text } from 'react-native-paper';
 import { theme } from '../../styles';
 import {
   Background,
   Button,
-  Header,
+  CustomText,
   TextInput
 } from '../../components';
 import {
@@ -41,58 +40,83 @@ const RegisterScreen: FC<Props> = ({ navigation }) => {
 
   return (
     <Background>
-      <Header>Create Account</Header>
-      <TextInput
-        label="Name"
-        returnKeyType="next"
-        value={name.value}
-        onChangeText={text => setName({ value: text, error: '' })}
-        error={!!name.error}
-        errorText={name.error}
-      />
-      <TextInput
-        label="Email"
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={text => setEmail({ value: text, error: '' })}
-        error={!!email.error}
-        errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
-      <TextInput
-        label="Password"
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={text =>
-          setPassword({ value: text, error: '' })
-        }
-        error={!!password.error}
-        errorText={password.error}
-        secureTextEntry
-      />
-      <Button
-        mode="contained"
-        onPress={onSignUpPressed}
-        style={{ marginTop: 24 }}
-      >
-        Sign Up
-      </Button>
-      <View style={styles.row}>
-        <Text>Already have an account? </Text>
-        <TouchableOpacity
-          onPress={() => navigation.replace('LoginScreen')}
+      <View style={styles.container}>
+        <CustomText fontSize={24}>Create Account</CustomText>
+        <TextInput
+          label="Name"
+          returnKeyType="next"
+          value={name.value}
+          onChangeText={text => setName({ value: text, error: '' })}
+          error={!!name.error}
+          errorText={name.error}
+        />
+        <TextInput
+          label="Email"
+          returnKeyType="next"
+          value={email.value}
+          onChangeText={text => setEmail({ value: text, error: '' })}
+          error={!!email.error}
+          errorText={email.error}
+          autoCapitalize="none"
+          autoCompleteType="email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+        />
+        <TextInput
+          label="Password"
+          returnKeyType="done"
+          value={password.value}
+          onChangeText={text =>
+            setPassword({ value: text, error: '' })
+          }
+          error={!!password.error}
+          errorText={password.error}
+          secureTextEntry
+        />
+        <Button
+          mode="contained"
+          onPress={onSignUpPressed}
+          style={{
+            marginTop: 24,
+            backgroundColor: theme.colors.primary
+          }}
         >
-          <Text style={styles.link}>Login</Text>
-        </TouchableOpacity>
+          <CustomText color={theme.colors.white} fontWeight="700">
+            Sign Up
+          </CustomText>
+        </Button>
+        <View style={styles.row}>
+          <CustomText
+            fontWeight="600"
+            color={theme.colors.secondary}
+            fontSize={14}
+          >
+            Already have an account?{' '}
+          </CustomText>
+          <TouchableOpacity
+            onPress={() => navigation.replace('LoginScreen')}
+          >
+            <CustomText
+              fontWeight="600"
+              color={theme.colors.primary}
+              fontSize={14}
+            >
+              Login
+            </CustomText>
+          </TouchableOpacity>
+        </View>
       </View>
     </Background>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   row: {
     flexDirection: 'row',
     marginTop: 4

@@ -1,12 +1,11 @@
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import React, { FC, useState } from 'react';
-import { Text } from 'react-native-paper';
 import { IEmail, IPassword } from '../../types/components';
 import { theme } from '../../styles';
 import {
   Background,
   Button,
-  Header,
+  CustomText,
   TextInput
 } from '../../components';
 import {
@@ -47,55 +46,89 @@ const LoginScreen: FC<Props> = ({ navigation }) => {
 
   return (
     <Background>
-      <Header>Welcome back.</Header>
-      <TextInput
-        label="Email"
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={(text: string) =>
-          setEmail({ value: text, error: '' })
-        }
-        error={!!email.error}
-        errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
-      <TextInput
-        label="Password"
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={(text: string) =>
-          setPassword({ value: text, error: '' })
-        }
-        error={!!password.error}
-        errorText={password.error}
-        secureTextEntry
-      />
-      <View style={styles.forgotPassword}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('ResetPasswordScreen')}
+      <View style={styles.container}>
+        <CustomText fontSize={24}>Welcome back</CustomText>
+        <TextInput
+          label="Email"
+          returnKeyType="next"
+          value={email.value}
+          onChangeText={(text: string) =>
+            setEmail({ value: text, error: '' })
+          }
+          error={!!email.error}
+          errorText={email.error}
+          autoCapitalize="none"
+          autoCompleteType="email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+        />
+        <TextInput
+          label="Password"
+          returnKeyType="done"
+          value={password.value}
+          onChangeText={(text: string) =>
+            setPassword({ value: text, error: '' })
+          }
+          error={!!password.error}
+          errorText={password.error}
+          secureTextEntry
+        />
+        <View style={styles.forgotPassword}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('ResetPasswordScreen')
+            }
+          >
+            <CustomText
+              fontWeight="600"
+              color={theme.colors.secondary}
+              fontSize={14}
+            >
+              Forgot your password?
+            </CustomText>
+          </TouchableOpacity>
+        </View>
+        <Button
+          style={{ backgroundColor: theme.colors.primary }}
+          mode="contained"
+          onPress={onLoginPressed}
         >
-          <Text style={styles.forgot}>Forgot your password?</Text>
-        </TouchableOpacity>
-      </View>
-      <Button mode="contained" onPress={onLoginPressed}>
-        Login
-      </Button>
-      <View style={styles.row}>
-        <Text>Don’t have an account? </Text>
-        <TouchableOpacity
-          onPress={() => navigation.replace('RegisterScreen')}
-        >
-          <Text style={styles.link}>Sign up</Text>
-        </TouchableOpacity>
+          <CustomText color={theme.colors.white} fontWeight="700">
+            Login
+          </CustomText>
+        </Button>
+        <View style={styles.row}>
+          <CustomText
+            fontWeight="600"
+            color={theme.colors.secondary}
+            fontSize={14}
+          >
+            Don’t have an account?{' '}
+          </CustomText>
+          <TouchableOpacity
+            onPress={() => navigation.replace('RegisterScreen')}
+          >
+            <CustomText
+              fontWeight="600"
+              color={theme.colors.primary}
+              fontSize={14}
+            >
+              Sign up
+            </CustomText>
+          </TouchableOpacity>
+        </View>
       </View>
     </Background>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   forgotPassword: {
     width: '100%',
     alignItems: 'flex-end',
@@ -104,14 +137,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     marginTop: 4
-  },
-  forgot: {
-    fontSize: 13,
-    color: theme.colors.secondary
-  },
-  link: {
-    fontWeight: 'bold',
-    color: theme.colors.primary
   }
 });
 

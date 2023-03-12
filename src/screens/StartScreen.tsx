@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react';
-import { Background, Header } from '../components';
+import { View } from 'react-native';
+import { Background, CustomText } from '../components';
 import { useAsyncStorage } from '../hooks';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 
 const StartScreen: FC<Props> = ({ navigation }) => {
   const [email] = useAsyncStorage('@email');
-  
+
   useEffect(() => {
     setTimeout(() => {
       navigation.reset({
@@ -21,7 +22,16 @@ const StartScreen: FC<Props> = ({ navigation }) => {
   }, [email]);
   return (
     <Background>
-      <Header>Nice to meet you!</Header>
+      <View
+        style={{
+          flex: 1,
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <CustomText>Nice to meet you!</CustomText>
+      </View>
     </Background>
   );
 };
