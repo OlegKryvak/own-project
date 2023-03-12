@@ -5,7 +5,7 @@ import { FONT_FAMILY } from '../../styles/typography';
 import { profileNavigation } from '../../utils';
 import {
   Background,
-  Header,
+  CustomText,
   NavigationCard
 } from '../../components';
 import {
@@ -24,13 +24,13 @@ const ProfileScreen: FC<Props> = ({ navigation }) => {
   return (
     <Background>
       <View style={styles.infoContainer}>
-        <Header
+        <CustomText
           color={theme.colors.secondary}
           fontSize={scaleFont(22)}
         >
           Oleg Kryvak
-        </Header>
-        <Header fontSize={scaleFont(18)}>Balance</Header>
+        </CustomText>
+        <CustomText fontSize={scaleFont(18)}>Balance</CustomText>
         <View style={styles.balanceType}>
           <Text
             style={[
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   navigationContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: WINDOW_WIDTH - 20,
+    width: WINDOW_WIDTH - 20
   }
 });
 

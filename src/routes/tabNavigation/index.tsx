@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as React from 'react';
-import { theme } from '../../styles';
+import { theme, verticalScale } from '../../styles';
 import {
   HomeScreen,
   MenuScreen,
@@ -41,9 +41,10 @@ const MainContainer = () => {
         },
         tabBarStyle: {
           backgroundColor: theme.colors.primary,
-          borderRadius: 12,
-          height: 85,
-          paddingTop: 5,
+          borderTopLeftRadius: 12,
+          borderTopRightRadius: 12,
+          height: verticalScale(85),
+          paddingTop: verticalScale(2),
           alignItems: 'center',
         },
         tabBarLabelStyle: {

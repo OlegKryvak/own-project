@@ -2,6 +2,7 @@ import { TextInput as Input } from 'react-native-paper';
 import { View, StyleSheet, Text } from 'react-native';
 import React, { FC } from 'react';
 import { ITextInput } from '../types/components';
+import CustomText from './CustomText';
 import { theme } from '../styles';
 
 interface Props extends ITextInput {}
@@ -21,7 +22,13 @@ const TextInput: FC<Props> = ({
         {...props}
       />
       {description && !errorText ? (
-        <Text style={styles.description}>{description}</Text>
+        <CustomText
+          fontSize={14}
+          fontWeight="500"
+          color={theme.colors.secondary}
+        >
+          {description}
+        </CustomText>
       ) : null}
       {errorText ? (
         <Text style={styles.error}>{errorText}</Text>
@@ -36,12 +43,7 @@ const styles = StyleSheet.create({
     marginVertical: 12
   },
   input: {
-    backgroundColor: theme.colors.surface
-  },
-  description: {
-    fontSize: 13,
-    color: theme.colors.secondary,
-    paddingTop: 8
+    backgroundColor: theme.colors.white
   },
   error: {
     fontSize: 13,
