@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: theme.colors.primaryContainer,
-    padding: '5%',
+    padding: 20,
     alignSelf: 'center',
     alignItems: 'center'
   }

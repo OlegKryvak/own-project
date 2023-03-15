@@ -20,7 +20,7 @@ if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
   use_frameworks! :linkage => linkage.to_sym
 end
-
+project 'Hola.xcodeproj'
 target 'Hola' do
   config = use_native_modules!
 
@@ -46,6 +46,8 @@ target 'Hola' do
   target 'HolaTests' do
     inherit! :complete
     # Pods for testing
+  
+    
   end
 
   post_install do |installer|
