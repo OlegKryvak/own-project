@@ -1,7 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as React from 'react';
+import { settingsSelector } from '../../store/reducers/settings';
 import { theme, verticalScale } from '../../styles';
+import { useAppSelector } from '../../store/hooks';
 import {
   HomeScreen,
   MenuScreen,
@@ -19,6 +21,8 @@ import {
 const Tab = createBottomTabNavigator();
 
 const MainContainer = () => {
+  const { themeMode } = useAppSelector(settingsSelector);
+
   return (
     <Tab.Navigator
       initialRouteName={HOME}
@@ -33,26 +37,37 @@ const MainContainer = () => {
               size={30}
               color={
                 focused
-                  ? theme.colors.lightGreen
-                  : theme.colors.primaryContainer
+                  ? themeMode === 'Light'
+                    ? theme.colors.lightGreen
+                    : theme.colors.darkBackgroundColor
+                  : themeMode === 'Light'
+                  ? theme.colors.primaryContainer
+                  : theme.colors.darkSecondary
               }
             />
           );
         },
         tabBarStyle: {
-          backgroundColor: theme.colors.primary,
-          borderTopLeftRadius: 12,
-          borderTopRightRadius: 12,
+          backgroundColor:
+            themeMode === 'Light'
+              ? theme.colors.primary
+              : theme.colors.white,
           height: verticalScale(85),
           paddingTop: verticalScale(2),
-          alignItems: 'center',
+          alignItems: 'center'
         },
         tabBarLabelStyle: {
           fontWeight: '900',
-          fontSize: 14,
+          fontSize: 14
         },
-        tabBarActiveTintColor: theme.colors.lightGreen,
-        tabBarInactiveTintColor: theme.colors.primaryContainer,
+        tabBarActiveTintColor:
+          themeMode === 'Light'
+            ? theme.colors.lightGreen
+            : theme.colors.darkBackgroundColor,
+        tabBarInactiveTintColor:
+          themeMode === 'Light'
+            ? theme.colors.primaryContainer
+            : theme.colors.darkSecondary
       })}
     >
       <Tab.Screen
@@ -77,6 +92,6 @@ const MainContainer = () => {
       />
     </Tab.Navigator>
   );
-}
+};
 
 export default MainContainer;

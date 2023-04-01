@@ -14,11 +14,14 @@ import {
   SCALE_4,
   theme
 } from '../styles';
+import { useAppSelector } from '../store/hooks';
+import { settingsSelector } from '../store/reducers/settings';
 
 interface Props extends INavigationCard {}
 
 const NavigationCard: FC<Props> = ({ text, icon, navigateTo }) => {
   const navigation = useNavigation<NavigationProps>();
+  const { themeMode } = useAppSelector(settingsSelector);
 
   const navigateHandler = useCallback(() => {
     if (navigateTo === 'LoginScreen') {
@@ -34,21 +37,53 @@ const NavigationCard: FC<Props> = ({ text, icon, navigateTo }) => {
   }, []);
   return (
     <TouchableOpacity
-      style={[styles.container, boxShadow(theme.colors.primary)]}
+      style={[
+        styles.container,
+        boxShadow(theme.colors.primary),
+        {
+          backgroundColor:
+            themeMode === 'Light'
+              ? theme.colors.primaryContainer
+              : theme.colors.darkSecondary,
+          borderColor:
+            themeMode === 'Light'
+              ? theme.colors.primary
+              : theme.colors.white
+        }
+      ]}
       onPress={navigateHandler}
     >
       <FontAwesome5
         name={icon}
         size={30}
-        color={theme.colors.primary}
+        color={
+          themeMode === 'Light'
+            ? theme.colors.primary
+            : theme.colors.darkBackgroundColor
+        }
       />
-      <Text style={[styles.text, boxShadow(theme.colors.primary)]}>
+      <Text
+        style={[
+          styles.text,
+          boxShadow(theme.colors.primary),
+          {
+            color:
+              themeMode === 'Light'
+                ? theme.colors.primary
+                : theme.colors.darkBackgroundColor
+          }
+        ]}
+      >
         {text}
       </Text>
       <Ionicons
         name="md-chevron-forward-outline"
         size={30}
-        color={theme.colors.primary}
+        color={
+          themeMode === 'Light'
+            ? theme.colors.primary
+            : theme.colors.darkBackgroundColor
+        }
       />
     </TouchableOpacity>
   );
@@ -64,15 +99,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: SCALE_4,
     paddingHorizontal: SCALE_10,
-    backgroundColor: theme.colors.primaryContainer,
-    borderColor: theme.colors.primary,
     borderWidth: 2
   },
   text: {
     fontSize: scaleFont(18),
     fontFamily: FONT_FAMILY,
-    fontWeight: '700',
-    color: theme.colors.primary
+    fontWeight: '700'
   }
 });
 
