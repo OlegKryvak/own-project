@@ -1,26 +1,52 @@
 import RadioButtonRN from 'radio-buttons-react-native';
 import { StyleSheet, View } from 'react-native';
 import React, { FC } from 'react';
+import { settingsSelector } from '../../store/reducers/settings';
 import { FONT_FAMILY, theme, WINDOW_WIDTH } from '../../styles';
+import { useAppSelector } from '../../store/hooks';
 import { ISettings } from '../../types/settings';
 import { CustomText } from '../../components';
 
 interface Props {
   title: string;
   data: ISettings[];
+  initial: number;
   onChange: (e: ISettings) => void;
 }
 
-const SettingsRadioBtn: FC<Props> = ({ title, data, onChange }) => {
+const SettingsRadioBtn: FC<Props> = ({
+  title,
+  data,
+  onChange,
+  initial
+}) => {
+  const { themeMode } = useAppSelector(settingsSelector);
+
   return (
     <>
-      <View style={styles.label}>
-        <CustomText color={theme.colors.primary}>
+      <View
+        style={[
+          styles.label,
+          {
+            borderColor:
+              themeMode === 'Light'
+                ? theme.colors.primary
+                : theme.colors.white
+          }
+        ]}
+      >
+        <CustomText
+          color={
+            themeMode === 'Light'
+              ? theme.colors.primary
+              : theme.colors.darkSecondary
+          }
+        >
           {title}
         </CustomText>
       </View>
       <RadioButtonRN
-        initial={1}
+        initial={initial}
         textColor={theme.colors.lightGreen}
         textStyle={{
           fontFamily: FONT_FAMILY,
@@ -28,8 +54,7 @@ const SettingsRadioBtn: FC<Props> = ({ title, data, onChange }) => {
           fontWeight: '700'
         }}
         boxStyle={{
-          width: WINDOW_WIDTH-60,
-
+          width: WINDOW_WIDTH - 60
         }}
         data={data}
         selectedBtn={onChange}
@@ -44,7 +69,6 @@ const SettingsRadioBtn: FC<Props> = ({ title, data, onChange }) => {
 const styles = StyleSheet.create({
   label: {
     width: WINDOW_WIDTH - 40,
-    borderColor: theme.colors.primary,
     borderWidth: 2,
     alignItems: 'center',
     borderRadius: 10,

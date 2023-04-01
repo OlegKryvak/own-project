@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import React, { FC } from 'react';
 import { Background, NavigationCard } from '../../components';
 import { verticalScale, WINDOW_WIDTH } from '../../styles';
 import { INavigationCard } from '../../types/components';
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   teslaImg: {
     maxHeight: '30%',
     aspectRatio: 2.2,
-    marginTop: verticalScale(30)
+    marginTop: verticalScale(50.5)
   },
   navigationContainer: {
     flex: 1,

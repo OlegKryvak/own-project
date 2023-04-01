@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { FC } from 'react';
+import { settingsSelector } from '../../store/reducers/settings';
 import { INavigationCard } from '../../types/components';
 import { FONT_FAMILY } from '../../styles/typography';
+import { useAppSelector } from '../../store/hooks';
 import { profileNavigation } from '../../utils';
 import {
   Background,
@@ -21,21 +23,42 @@ interface Props {
 }
 
 const ProfileScreen: FC<Props> = ({ navigation }) => {
+  const { themeMode } = useAppSelector(settingsSelector);
+
   return (
     <Background>
       <View style={styles.infoContainer}>
         <CustomText
-          color={theme.colors.secondary}
+          color={
+            themeMode === 'Light'
+              ? theme.colors.secondary
+              : theme.colors.white
+          }
           fontSize={scaleFont(22)}
         >
           Oleg Kryvak
         </CustomText>
-        <CustomText fontSize={scaleFont(18)}>Balance</CustomText>
+        <CustomText
+          color={
+            themeMode === 'Light'
+              ? theme.colors.primary
+              : theme.colors.darkPrimary
+          }
+          fontSize={scaleFont(18)}
+        >
+          Balance
+        </CustomText>
         <View style={styles.balanceType}>
           <Text
             style={[
               styles.textTitle,
-              boxShadow(theme.colors.secondary)
+              boxShadow(theme.colors.secondary),
+              {
+                color:
+                  themeMode === 'Light'
+                    ? theme.colors.secondary
+                    : theme.colors.white
+              }
             ]}
           >
             Main:
@@ -49,12 +72,28 @@ const ProfileScreen: FC<Props> = ({ navigation }) => {
             0.00$
           </Text>
         </View>
-        <View style={styles.divider} />
+        <View
+          style={[
+            styles.divider,
+            {
+              backgroundColor:
+                themeMode === 'Light'
+                  ? theme.colors.primary
+                  : theme.colors.darkPrimary
+            }
+          ]}
+        />
         <View style={styles.balanceType}>
           <Text
             style={[
               styles.textTitle,
-              boxShadow(theme.colors.secondary)
+              boxShadow(theme.colors.secondary),
+              {
+                color:
+                  themeMode === 'Light'
+                    ? theme.colors.secondary
+                    : theme.colors.white
+              }
             ]}
           >
             Bonus:
@@ -101,8 +140,7 @@ const styles = StyleSheet.create({
   textTitle: {
     fontFamily: FONT_FAMILY,
     fontWeight: '600',
-    fontSize: scaleFont(16),
-    color: theme.colors.secondary
+    fontSize: scaleFont(16)
   },
   textValue: {
     fontFamily: FONT_FAMILY,
@@ -112,8 +150,7 @@ const styles = StyleSheet.create({
   },
   divider: {
     height: 1,
-    width: WINDOW_WIDTH - 100,
-    backgroundColor: theme.colors.primary
+    width: WINDOW_WIDTH - 100
   },
   navigationContainer: {
     alignItems: 'center',

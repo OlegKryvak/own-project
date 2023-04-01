@@ -1,26 +1,30 @@
 import ToggleSwitch from 'toggle-switch-react-native';
-import React, { FC, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import {
-  FONT_FAMILY,
-  scaleFont,
-  theme,
-  WINDOW_WIDTH
-} from '../styles';
+import React, { FC, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { settingsSelector } from '../store/reducers/settings';
+import { scaleFont, theme, WINDOW_WIDTH } from '../styles';
 import CustomText from './CustomText';
 
 interface Props {
   title: string;
-  onChange: () => void;
+  value: boolean;
+  onChange: any;
 }
 
-const Toggler: FC<Props> = ({ title, onChange }) => {
-  const [isOn, setIsOn] = useState<boolean>(false);
+const Toggler: FC<Props> = ({ title, value, onChange }) => {
+  const dispatch = useAppDispatch();
+  const { themeMode } = useAppSelector(settingsSelector);
+
   return (
     <View style={styles.container}>
-      <View style={{width: '70%'}}>
+      <View style={{ width: '70%' }}>
         <CustomText
-          color={theme.colors.secondary}
+          color={
+            themeMode === 'Light'
+              ? theme.colors.secondary
+              : theme.colors.darkPrimary
+          }
           fontWeight="700"
           fontSize={scaleFont(16)}
         >
@@ -28,13 +32,18 @@ const Toggler: FC<Props> = ({ title, onChange }) => {
         </CustomText>
       </View>
       <ToggleSwitch
-        isOn={isOn}
+        isOn={value}
         onColor={theme.colors.white}
         offColor={theme.colors.secondary}
-        thumbOnStyle={{ backgroundColor: theme.colors.lightGreen }}
+        thumbOnStyle={{
+          backgroundColor:
+            themeMode === 'Light'
+              ? theme.colors.lightGreen
+              : theme.colors.darkPrimary
+        }}
         thumbOffStyle={{ backgroundColor: theme.colors.white }}
         size="medium"
-        onToggle={() => setIsOn(prev => !prev)}
+        onToggle={() => dispatch(onChange(!value))}
       />
     </View>
   );

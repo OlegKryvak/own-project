@@ -16,8 +16,5 @@ export const themes = [
   },
   {
     label: 'Dark'
-  },
-  {
-    label: 'Simplified'
   }
 ];

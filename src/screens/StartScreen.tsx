@@ -1,13 +1,17 @@
 import React, { FC, useEffect } from 'react';
 import { View } from 'react-native';
+import { settingsSelector } from '../store/reducers/settings';
 import { Background, CustomText } from '../components';
+import { useAppSelector } from '../store/hooks';
 import { useAsyncStorage } from '../hooks';
+import { theme } from '../styles';
 
 interface Props {
   navigation: any;
 }
 
 const StartScreen: FC<Props> = ({ navigation }) => {
+  const { themeMode } = useAppSelector(settingsSelector);
   const [email] = useAsyncStorage('@email');
 
   useEffect(() => {
@@ -30,7 +34,9 @@ const StartScreen: FC<Props> = ({ navigation }) => {
           alignItems: 'center'
         }}
       >
-        <CustomText>Nice to meet you!</CustomText>
+        <CustomText fontSize={30} color={themeMode === 'Light'
+              ? theme.colors.primary
+              : theme.colors.darkPrimary}>Nice to meet you!</CustomText>
       </View>
     </Background>
   );
