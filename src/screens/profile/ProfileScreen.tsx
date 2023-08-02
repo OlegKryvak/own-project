@@ -17,6 +17,7 @@ import {
   theme,
   WINDOW_WIDTH
 } from '../../styles';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   navigation: any;
@@ -24,7 +25,7 @@ interface Props {
 
 const ProfileScreen: FC<Props> = ({ navigation }) => {
   const { themeMode } = useAppSelector(settingsSelector);
-
+  
   return (
     <Background>
       <View style={styles.infoContainer}>

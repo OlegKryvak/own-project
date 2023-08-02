@@ -6,11 +6,12 @@ import { FONT_FAMILY, theme, WINDOW_WIDTH } from '../../styles';
 import { useAppSelector } from '../../store/hooks';
 import { ISettings } from '../../types/settings';
 import { CustomText } from '../../components';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   title: string;
   data: ISettings[];
-  initial: number;
+  initial?: number;
   onChange: (e: ISettings) => void;
 }
 
@@ -21,7 +22,8 @@ const SettingsRadioBtn: FC<Props> = ({
   initial
 }) => {
   const { themeMode } = useAppSelector(settingsSelector);
-
+  const { t } = useTranslation();
+ 
   return (
     <>
       <View

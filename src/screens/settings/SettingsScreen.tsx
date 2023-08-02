@@ -10,6 +10,7 @@ import {
   setTheme,
   settingsSelector
 } from '../../store/reducers/settings';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   navigation: any;
@@ -17,7 +18,8 @@ interface Props {
 
 const SettingsScreen: FC<Props> = ({ navigation }) => {
   const dispatch = useAppDispatch();
-  const { theme, language } = useAppSelector(settingsSelector);
+  const { t } = useTranslation();
+  const { themeMode, language } = useAppSelector(settingsSelector);
 
   const changeLanguageHandler = e => {
     dispatch(setLanguage(e.label));
@@ -26,6 +28,7 @@ const SettingsScreen: FC<Props> = ({ navigation }) => {
     dispatch(setTheme(e.label));
   };
 
+  
   return (
     <Background>
       <ScrollView
@@ -36,20 +39,20 @@ const SettingsScreen: FC<Props> = ({ navigation }) => {
       >
         <SettingsRadioBtn
           initial={
-            language === 'English'
+            (language === 'English')
               ? 1
-              : language === 'Ukrainian'
+              : (language === 'Ukrainian')
               ? 2
               : 3
           }
           data={languages}
-          title="Language"
+          title={t('language')}
           onChange={changeLanguageHandler}
         />
         <SettingsRadioBtn
-          initial={theme === 'Light' ? 1 : 2}
+          initial={themeMode === 'Light' ? 1 : 2}
           data={themes}
-          title="Theme"
+          title={t('theme')}
           onChange={changeThemeHandler}
         />
         <SettingsTogglers title="Message types" />

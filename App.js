@@ -4,8 +4,12 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import { AppStackRoutes } from './src/routes/index';
 import { persistor, store } from './src/store';
+import './src/localization/index';
+
 
 export default function AppNavigator() {
+
+  
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

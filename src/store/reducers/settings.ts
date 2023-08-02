@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import i18n from '../../localization';
 
 interface IState {
   themeMode: 'Dark' | 'Light';
@@ -30,6 +31,13 @@ const settingsSlice = createSlice({
       state.themeMode = action.payload;
     },
     setLanguage: (state, action) => {
+      i18n.changeLanguage(
+        action.payload === 'English'
+          ? 'en'
+          : action.payload === 'Ukrainian'
+          ? 'uk'
+          : 'es'
+      );        
       state.language = action.payload;
     },
     setAddFunds: (state, action) => {

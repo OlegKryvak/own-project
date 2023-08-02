@@ -17,12 +17,13 @@ import {
   SETTINGS,
   switchBottomIcon
 } from '../../utils';
+import { useTranslation } from 'react-i18next';
 
 const Tab = createBottomTabNavigator();
 
 const MainContainer = () => {
   const { themeMode } = useAppSelector(settingsSelector);
-
+  const { t } = useTranslation();
   return (
     <Tab.Navigator
       initialRouteName={HOME}
@@ -71,22 +72,22 @@ const MainContainer = () => {
       })}
     >
       <Tab.Screen
-        name={HOME}
+        name={t(HOME)}
         component={HomeScreen}
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name={MENU}
+        name={t(MENU)}
         component={MenuScreen}
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name={SETTINGS}
+        name={t(SETTINGS)}
         component={SettingsScreen}
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name={PROFILE}
+        name={t(PROFILE)}
         component={ProfileScreen}
         options={{ headerShown: false }}
       />

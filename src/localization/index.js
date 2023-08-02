@@ -1,24 +1,26 @@
-import { I18n } from 'i18n-js';
-import de from './languages/de';
-import en from './languages/en';
-import es from './languages/es';
-import jp from './languages/jp';
-import pt from './languages/pt';
-import ru from './languages/ru';
-import zh from './languages/zh';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import en from './languages/en.json';
+import es from './languages/es.json';
+import uk from './languages/uk.json';
 
-// Set the key-value pairs for the different languages you want to support.
-const i18n = new I18n({
-  de,
-  en,
-  es,
-  jp,
-  pt,
-  ru,
-  zh
-});
+// the translations
+// (tip move them in a JSON file and import them,
+// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
+const resources = {
+  en: { translation: en },
+  es: { translation: es },
+  uk: { translation: uk },
+};
 
-// Set the locale once at the beginning of your app.
-i18n.locale = 'en';
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources,
+    lng: 'en',
+    interpolation: {
+      escapeValue: false
+    }
+  });
 
 export default i18n;

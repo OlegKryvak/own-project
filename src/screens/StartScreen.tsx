@@ -1,19 +1,32 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useLayoutEffect } from 'react';
 import { View } from 'react-native';
 import { settingsSelector } from '../store/reducers/settings';
 import { Background, CustomText } from '../components';
 import { useAppSelector } from '../store/hooks';
 import { useAsyncStorage } from '../hooks';
 import { theme } from '../styles';
+import { useTranslation } from 'react-i18next';
+import i18n from '../localization';
 
 interface Props {
   navigation: any;
 }
 
 const StartScreen: FC<Props> = ({ navigation }) => {
-  const { themeMode } = useAppSelector(settingsSelector);
-  const [email] = useAsyncStorage('@email');
+  const { themeMode, language } = useAppSelector(settingsSelector);
 
+  const { t } = useTranslation();
+
+  const [email] = useAsyncStorage('@email');
+  useLayoutEffect(() => {
+    i18n.changeLanguage(
+      language === 'English'
+        ? 'en'
+        : language === 'Ukrainian'
+        ? 'uk'
+        : 'es'
+    );
+  }, []);
   useEffect(() => {
     setTimeout(() => {
       navigation.reset({
@@ -34,9 +47,16 @@ const StartScreen: FC<Props> = ({ navigation }) => {
           alignItems: 'center'
         }}
       >
-        <CustomText fontSize={30} color={themeMode === 'Light'
+        <CustomText
+          fontSize={25}
+          color={
+            themeMode === 'Light'
               ? theme.colors.primary
-              : theme.colors.darkPrimary}>Nice to meet you!</CustomText>
+              : theme.colors.darkPrimary
+          }
+        >
+          {t('niceToMeetYou')}
+        </CustomText>
       </View>
     </Background>
   );
